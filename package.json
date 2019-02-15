@@ -1,0 +1,41 @@
+{
+  "name": "filter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "+v",
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": "ali",
+    "env": {
+      "mocha": true
+    },
+    "rules": {
+      "no-bitwise": "warn"
+    }
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "mocha test",
+    "test:babel": "babel --plugins transform-react-jsx-location src/index.js"
+  },
+  "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "chai": "^4.2.0",
+    "eslint-config-ali": "^5.0.1",
+    "mocha": "^5.2.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "^2.1.5"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
