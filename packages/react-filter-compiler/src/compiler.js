@@ -158,7 +158,6 @@ function parseFilters(exp) {
 function wrapFilter(exp, filter) {
   const i = filter.indexOf('(');
   if (i < 0) {
-    // _f: resolveFilter
     return `${filter}(${exp})`;
   } else {
     const name = filter.slice(0, i);
