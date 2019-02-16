@@ -23,4 +23,5 @@ result: *Hello world!*
 
 ### Configure
 
-Install [babel-plugin-transform-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/babel-plugin-transform-react-jsx-filter)
+Babel [babel-plugin-transform-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/babel-plugin-transform-react-jsx-filter)
+Eslint [eslint-config-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/eslint-config-react-jsx-filter)

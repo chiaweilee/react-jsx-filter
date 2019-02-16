@@ -6,7 +6,10 @@
   "author": "+v",
   "license": "MIT",
   "eslintConfig": {
-    "extends": "ali/react",
+    "extends": [
+      "ali/react",
+      "react-jsx-filter"
+    ],
     "env": {
       "mocha": true
     }
@@ -20,6 +23,7 @@
     "babel-plugin-transform-react-jsx-filter": "^6.0.0",
     "chai": "^4.2.0",
     "eslint-config-ali": "^5.0.1",
+    "eslint-config-react-jsx-filter": "^6.0.0",
     "mocha": "^5.2.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
