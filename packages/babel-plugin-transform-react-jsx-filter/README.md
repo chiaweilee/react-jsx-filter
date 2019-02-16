@@ -35,7 +35,7 @@ require('babel-core').transform('code', {
 
 ### Via Webpack
 
-```json
+```JavaScript
 {
   test: /\.(js|mjs|jsx|ts|tsx)$/,
   loader: require.resolve('babel-loader'),
