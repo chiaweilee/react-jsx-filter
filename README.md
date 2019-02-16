@@ -3,13 +3,13 @@
 
 ### Example
 
-```react
+```react.js
 <div>{ 'react' | capitalize }</div>
 ```
 
 result: *React*
 
-```react
+```react.js
 <div>{ 'react' | translate('zh-cn') }</div>
 ```
 
