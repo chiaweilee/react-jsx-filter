@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-react-jsx-filter": "^6.0.0",
     "chai": "^4.2.0",
     "eslint-config-ali": "^5.0.1",
     "mocha": "^5.2.0",

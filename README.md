@@ -21,6 +21,6 @@ result: *你好*
 
 result: *Hello world!*
 
-### Embedding Expressions in JSX
+### Configure
 
-JavaScript expression
+Install [babel-plugin-transform-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/babel-plugin-transform-react-jsx-filter%406)
