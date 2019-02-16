@@ -14,7 +14,7 @@
 ```
 
 ```react.js
-<div>你好</div>
+// <div>你好</div>
 <div>{ 'hello' | translate('zh-cn') }</div>
 ```
 
