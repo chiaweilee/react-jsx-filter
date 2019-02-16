@@ -23,4 +23,4 @@ result: *Hello world!*
 
 ### Configure
 
-Install [babel-plugin-transform-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/babel-plugin-transform-react-jsx-filter%406)
+Install [babel-plugin-transform-react-jsx-filter](https://github.com/chiaweilee/react-jsx-filter/tree/master/packages/babel-plugin-transform-react-jsx-filter)
