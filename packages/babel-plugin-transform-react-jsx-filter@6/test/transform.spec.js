@@ -12,7 +12,7 @@ const test = (code, target) => transform(
   }
 );
 
-describe('test babel-plugin-transform-react-jsx-filter', () => {
+describe('test transform-react-jsx-filter@6', () => {
   it('should parse react jsx filter correctly', () => {
     test('<div>{ \'hello\' | a }</div>', '<div>{a(\'hello\')}</div>;');
     test('<div>{ \'hello\' | a() }</div>', '<div>{a(\'hello\')}</div>;');
