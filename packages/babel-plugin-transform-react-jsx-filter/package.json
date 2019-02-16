@@ -1,0 +1,9 @@
+{
+  "name": "babel-plugin-transform-react-jsx-filter",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0"
+  }
+}
