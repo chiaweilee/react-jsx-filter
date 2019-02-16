@@ -1,0 +1,6 @@
+{
+  "name": "eslint-config-react-jsx-filter",
+  "version": "6.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

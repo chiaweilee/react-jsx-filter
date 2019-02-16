@@ -9,14 +9,10 @@
     "extends": "ali/react",
     "env": {
       "mocha": true
-    },
-    "rules": {
-      "no-bitwise": "warn"
     }
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "mocha packages/*/test/*.spec.js"
   },
   "devDependencies": {
