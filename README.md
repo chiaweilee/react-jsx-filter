@@ -10,10 +10,16 @@
 result: *React*
 
 ```react.js
-<div>{ 'react' | translate('zh-cn') }</div>
+<div>{ 'hello' | translate('zh-cn') }</div>
 ```
 
-result: *影响*
+result: *你好*
+
+```react.js
+<div>{ 'hello' | capitalize | concat(' ', 'world!') }</div>
+```
+
+result: *Hello world!*
 
 ### Embedding Expressions in JSX
 
