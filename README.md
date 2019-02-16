@@ -1,4 +1,4 @@
-## React-jsx-filter
+## React-JSX-filter
 ---
 
 ### Example
