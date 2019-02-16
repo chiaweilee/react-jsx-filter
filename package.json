@@ -6,7 +6,7 @@
   "author": "+v",
   "license": "MIT",
   "eslintConfig": {
-    "extends": "ali",
+    "extends": "ali/react",
     "env": {
       "mocha": true
     },
@@ -17,14 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha test",
-    "test:babel": "babel --plugins transform-react-jsx-location src/index.js"
-  },
-  "dependencies": {
-    "babel-plugin-syntax-jsx": "^6.18.0"
+    "test": "mocha packages/*/test/*.spec.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "chai": "^4.2.0",
     "eslint-config-ali": "^5.0.1",
     "mocha": "^5.2.0",

@@ -9,4 +9,8 @@ function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-ReactDOM.render(<div>{ 'hello world' | capitalize }</div>, document.getElementById('root'));
+function concat(value, str) {
+  return value + str;
+}
+
+ReactDOM.render(<div>{ 'hello' | capitalize | concat(' world!') }</div>, document.getElementById('root'));

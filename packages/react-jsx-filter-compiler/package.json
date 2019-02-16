@@ -1,0 +1,7 @@
+{
+  "name": "react-jsx-filter-compiler",
+  "version": "0.0.0",
+  "main": "src/compiler.js",
+  "author": "+v",
+  "license": "MIT"
+}

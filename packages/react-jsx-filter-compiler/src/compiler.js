@@ -1,35 +1,33 @@
-'use strict';
-
 /* eslint-disable no-return-assign,no-void,no-plusplus,default-case,no-cond-assign,no-multi-assign */
 
-var regexEscapeRE = /[-.*+?^${}()|[\]/\\]/g;
-var validDivisionCharRE = /[\w).+\-_$\]]/;
+const regexEscapeRE = /[-.*+?^${}()|[\]/\\]/g;
+const validDivisionCharRE = /[\w).+\-_$\]]/;
 
-var buildRegex = cached(function (delimiters) {
-  var open = delimiters[0].replace(regexEscapeRE, '\\$&');
-  var close = delimiters[1].replace(regexEscapeRE, '\\$&');
-  return new RegExp(open + '((?:.|\\n)+?)' + close, 'g');
+const buildRegex = cached(delimiters => {
+  const open = delimiters[0].replace(regexEscapeRE, '\\$&');
+  const close = delimiters[1].replace(regexEscapeRE, '\\$&');
+  return new RegExp(`${open}((?:.|\\n)+?)${close}`, 'g');
 });
 
-function parseText(text) {
-  var delimiters = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ['{', '}'];
-
-  var tagRE = buildRegex(delimiters);
+function parseText(text, delimiters = ['{', '}']) {
+  const tagRE = buildRegex(delimiters);
   if (!tagRE.test(text)) {
     return;
   }
-  var rawTokens = [];
-  var lastIndex = tagRE.lastIndex = 0;
-  var match = void 0;
-  var index = void 0;
-  while (match = tagRE.exec(text)) {
+  const tokens = [];
+  const rawTokens = [];
+  let lastIndex = (tagRE.lastIndex = 0);
+  let match;
+  let index;
+  while ((match = tagRE.exec(text))) {
     index = match.index;
     // push text token
     if (index > lastIndex) {
       rawTokens.push(text.slice(lastIndex, index));
     }
     // tag token
-    var exp = parseFilters(match[1].trim());
+    const exp = parseFilters(match[1].trim());
+    tokens.push(exp);
     rawTokens.push(delimiters[0] + exp + delimiters[1]);
     lastIndex = index + match[0].length;
   }
@@ -38,24 +36,24 @@ function parseText(text) {
   }
   return {
     expression: rawTokens.join(''),
-    tokens: rawTokens
+    tokens,
   };
 }
 
 function parseFilters(exp) {
-  var inSingle = false;
-  var inDouble = false;
-  var inTemplateString = false;
-  var inRegex = false;
-  var curly = 0;
-  var square = 0;
-  var paren = 0;
-  var lastFilterIndex = 0;
-  var c = void 0;
-  var prev = void 0;
-  var i = void 0;
-  var expression = void 0;
-  var filters = void 0;
+  let inSingle = false;
+  let inDouble = false;
+  let inTemplateString = false;
+  let inRegex = false;
+  let curly = 0;
+  let square = 0;
+  let paren = 0;
+  let lastFilterIndex = 0;
+  let c;
+  let prev;
+  let i;
+  let expression;
+  let filters;
 
   for (i = 0; i < exp.length; i++) {
     prev = c;
@@ -76,8 +74,14 @@ function parseFilters(exp) {
       if (c === 0x2f && prev !== 0x5c) {
         inRegex = false;
       }
-    } else if (c === 0x7c && // pipe
-    exp.charCodeAt(i + 1) !== 0x7c && exp.charCodeAt(i - 1) !== 0x7c && !curly && !square && !paren) {
+    } else if (
+      c === 0x7c && // pipe
+      exp.charCodeAt(i + 1) !== 0x7c &&
+      exp.charCodeAt(i - 1) !== 0x7c &&
+      !curly &&
+      !square &&
+      !paren
+    ) {
       if (expression === undefined) {
         // first filter, end of expression
         lastFilterIndex = i + 1;
@@ -117,8 +121,8 @@ function parseFilters(exp) {
       }
       if (c === 0x2f) {
         // /
-        var j = i - 1;
-        var p = void 0;
+        let j = i - 1;
+        let p = void 0;
         // find first non-whitespace prev char
         for (; j >= 0; j--) {
           p = exp.charAt(j);
@@ -154,21 +158,20 @@ function parseFilters(exp) {
 }
 
 function wrapFilter(exp, filter) {
-  var i = filter.indexOf('(');
+  const i = filter.indexOf('(');
   if (i < 0) {
-    // _f: resolveFilter
-    return filter + '(' + exp + ')';
+    return `${filter}(${exp})`;
   } else {
-    var name = filter.slice(0, i);
-    var args = filter.slice(i + 1);
-    return name + '(' + exp + (args !== ')' ? ',' + args : args);
+    const name = filter.slice(0, i);
+    const args = filter.slice(i + 1);
+    return `${name}(${exp}${args !== ')' ? `,${args}` : args}`;
   }
 }
 
 function cached(fn) {
-  var cache = Object.create(null);
+  const cache = Object.create(null);
   return function cachedFn(str) {
-    var hit = cache[str];
+    const hit = cache[str];
     return hit || (cache[str] = fn(str));
   };
 }
