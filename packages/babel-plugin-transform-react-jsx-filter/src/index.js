@@ -4,7 +4,7 @@ module.exports = ({ types: t }) => {
   function approach(expression) {
     function iterator(expr) {
       if (!expr.right && !expr.left) {
-        // approaching minimum
+        // minimum
         return expr;
       }
 
@@ -18,14 +18,16 @@ module.exports = ({ types: t }) => {
             }
             right.arguments.unshift(iterator(right.left));
             return right;
+          } {
+            // fix: case-declaration
+            // approaching minimum
+            const argv = right.arguments;
+            argv.unshift(iterator(left));
+            return t.callExpression(
+              t.identifier(right.callee.name),
+              argv
+            );
           }
-          // approaching minimum
-          const argv = right.arguments;
-          argv.unshift(iterator(left));
-          return t.callExpression(
-            t.identifier(right.callee.name),
-            argv
-          );
 
         case 'Identifier':
           return t.callExpression(
