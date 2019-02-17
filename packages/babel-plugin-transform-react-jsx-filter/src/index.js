@@ -32,6 +32,7 @@ module.exports = ({ types: t }) => {
             t.identifier(right.name),
             [iterator(left)]
           );
+
         default:
           console.warn(`unknow type of ${right.type}`);
       }
@@ -40,7 +41,7 @@ module.exports = ({ types: t }) => {
     return iterator(expression);
   }
 
-  const nestedVisitor = {
+  const visitor = {
     JSXOpeningElement(node) {
       node.container.children = node.container.children.map(child => {
         if (
@@ -61,10 +62,6 @@ module.exports = ({ types: t }) => {
 
   return {
     inherits: require('babel-plugin-syntax-jsx'),
-    visitor: {
-      JSXElement(path) {
-        path.traverse(nestedVisitor);
-      },
-    },
+    visitor,
   };
 };
