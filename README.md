@@ -4,20 +4,25 @@
 ### Example
 
 ```react.js
+// <div>React</div>
 <div>{ 'react' | capitalize }</div>
 ```
 
-result: *React*
+```react.js
+// <div>Hello world!</div>
+<div>{ 'hello' | capitalize | concat(' ', 'world!') }</div>
+```
 
 ```react.js
+// <div>你好</div>
 <div>{ 'hello' | translate('zh-cn') }</div>
 ```
 
-result: *你好*
-
 ```react.js
-<div>{ 'hello' | capitalize | concat(' ', 'world!') }</div>
+// with lodash
+<div>{ this.state.data | _.filter({ 'active': true }) | this.renderTable }</div>
 ```
+
 
 result: *Hello world!*
 
